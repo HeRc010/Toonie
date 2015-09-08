@@ -3,6 +3,10 @@
 
 /*
    The TString class is a custom string class to allow for additional functionality not provided in the standard template library.
+
+   Todo:
+
+   - should the string class be a subclass of the std::string class?
 */
 
 #include <string>
