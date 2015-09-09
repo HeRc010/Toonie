@@ -29,7 +29,9 @@ vector<TString> TFile::get_lines() const
 {
    vector<TString> lines;
 
-   // TODO: add check to ensure that the file exists
+   if (!exists())
+      throw runtime_error("File error: file does not exist");
+
    ifstream input_file(path_.c_str());
 
    string next_line;

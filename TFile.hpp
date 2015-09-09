@@ -7,6 +7,7 @@
 
 #include "TString.hpp"
 
+#include <stdexcept>
 #include <string>
 #include <vector>
 #include <fstream>
