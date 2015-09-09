@@ -22,7 +22,7 @@ bool TFile::exists() const
    fstream file(path_);
    if (file.good())
       return true;
-   return true;
+   return false;
 }
 
 vector<TString> TFile::get_lines() const
