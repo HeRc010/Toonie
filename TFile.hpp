@@ -19,6 +19,8 @@ public:
    TFile(const std::string &path);
    ~TFile();
 
+   bool exists() const;
+
    std::vector<TString> get_lines() const;
 };
 

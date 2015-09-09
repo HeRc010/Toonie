@@ -17,6 +17,14 @@ TFile::~TFile()
 {
 }
 
+bool TFile::exists() const
+{
+   fstream file(path_);
+   if (file.good())
+      return true;
+   return true;
+}
+
 vector<TString> TFile::get_lines() const
 {
    vector<TString> lines;
