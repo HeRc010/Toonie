@@ -24,5 +24,8 @@ int main()
       }
    }
 
+   TFile output_file("output.txt");
+   output_file.write_lines(lines);
+
    return 0;
 }

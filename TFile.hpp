@@ -14,7 +14,7 @@
 
 class TFile
 {
-   const std::string path_;
+   const TString path_;
 
 public:
    TFile(const std::string &path);
@@ -23,6 +23,7 @@ public:
    bool exists() const;
 
    std::vector<TString> get_lines() const;
+   bool write_lines(const std::vector<TString> &lines) const;
 };
 
 #endif //__TFILE_HPP__
