@@ -3,6 +3,9 @@
 
 /*
    The TFile class is a wrapper for files. Ideally the interface will allow for both reading and writing.
+
+   TODO:
+   - reformat internal structure? use an fstream instead? If this is done, access to the file will need to be controlled by the class; wouldn't want another process to modify the file in the interim
 */
 
 #include "TString.hpp"

@@ -23,8 +23,9 @@ public:
    ~TString();
 
    const char* c_str() const;
+   unsigned size() const;
 
-   std::vector<TString> split(const char delimiter) const;
+   std::vector<TString> split(const TString &delimiter) const;
 };
 
 #endif //__TSTRING_H__
