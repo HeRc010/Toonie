@@ -23,10 +23,19 @@ public:
    TFile(const std::string &path);
    ~TFile();
 
+   // return true if the file exists, false otherwise
    bool exists() const;
 
+   // get the lines in the file
    std::vector<TString> get_lines() const;
-   bool write_lines(const std::vector<TString> &lines) const;
+
+   // replace the contents of the file with the given lines
+   // return true if successful, false otherwise
+   bool overwrite_lines(const std::vector<TString> &lines) const;
+
+   // append the given lines to the end of the file
+   // return true if successful, false otherwise
+   bool append_lines(const std::vector<TString> &lines) const;
 };
 
 #endif //__TFILE_HPP__

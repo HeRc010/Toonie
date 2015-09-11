@@ -43,19 +43,11 @@ vector<TString> TFile::get_lines() const
    return lines;
 }
 
-// TODO: return true if successful, false otherwise
-bool TFile::write_lines(const vector<TString> &lines) const
+bool TFile::overwrite_lines(const vector<TString> &lines) const
 {
-   // TODO: need to define expectations here; if the file exists, are the lines added to the existing file or is everything in the file overwritten before the lines are added?
-   if (exists())
-   {
-      remove(path_.c_str());
-   }
-
    ofstream output_file;
    output_file.open(path_.c_str());
 
-   // should a newline character be added here?
    for (auto &line : lines)
    {
       output_file << line.c_str() << endl;
@@ -63,5 +55,27 @@ bool TFile::write_lines(const vector<TString> &lines) const
 
    output_file.close();
 
+   // TODO: add formal error checking
+   return true;
+}
+
+bool TFile::append_lines(const std::vector<TString> &lines) const
+{
+   if (!exists())
+   {
+      throw std::runtime_error("File error: file does not exist");
+   }
+
+   ofstream output_file;
+   output_file.open(path_.c_str(), ios_base::app);
+
+   for (auto &line : lines)
+   {
+      output_file << line.c_str() << endl;
+   }
+
+   output_file.close();
+
+   // TODO: add formal error checking
    return true;
 }

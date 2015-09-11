@@ -24,8 +24,8 @@ int main()
       }
    }
 
-   // TFile output_file("output.txt");
-   // output_file.write_lines(lines);
+   //input_file.append_lines({TString("test line"), TString("test line 2"), TString("test line 3")});
+   input_file.overwrite_lines({TString("test line a"), TString("test line b"), TString("test line c")});
 
    return 0;
 }
