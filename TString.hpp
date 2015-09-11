@@ -21,9 +21,13 @@ public:
    TString(const char *s);
    ~TString();
 
+   // return a pointer to the char array associated with the string
    const char* c_str() const;
+
+   // return the number of characters in the string
    unsigned size() const;
 
+   // split the string by the specified delimiter, return the results in a list
    std::vector<TString> split(const TString &delimiter) const;
 };
 
