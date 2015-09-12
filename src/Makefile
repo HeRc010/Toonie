@@ -20,7 +20,7 @@ $(ODIR)/%.o: %.cpp $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 exec: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+	$(CC) -o $(ODIR)/$@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean
 
