@@ -3,5 +3,4 @@ A small software collection to make the development of small, time-intensive C++
 
 Todo:
 
-- Use makefiles instead of a shell script
-- Add file output interface to the File class
+- leverage all the makefile features; use nested makefiles in the nested src/ directories; maybe try automake
