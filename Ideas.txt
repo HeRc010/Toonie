@@ -1,0 +1,5 @@
+So! Some cool things to think about:
+
+- prime number checking; custom number class? Maybe look into flexible precision too
+- custom "containers"; a custom "vector" class, or "growable buffer" as labeled in Box2D; could allow for flexible underlying representation(like arrays, or stacks, or queues); that would be fun
+- the implementation of some efficient algorithms would be good too; example: AKS for primes
