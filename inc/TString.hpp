@@ -6,6 +6,7 @@
 
    Todo:
    - should the string class be a subclass of the std::string class?
+   - implement operator==(...)
 */
 
 #include <string>
@@ -17,6 +18,7 @@ class TString
    std::string string_;
 
 public:
+   TString();
    TString(const std::string &s);
    TString(const char *s);
    ~TString();

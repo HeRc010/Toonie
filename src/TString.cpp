@@ -2,6 +2,11 @@
 
 using namespace std;
 
+TString::TString()
+   : string_(NULL)
+{
+}
+
 TString::TString(const string &s)
    : string_(s)
 {
