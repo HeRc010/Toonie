@@ -10,7 +10,7 @@ LDIR =../lib
 # Unused
 LIBS=-lm
 
-_DEPS = TFile.hpp TString.hpp containers/TContainer.hpp containers/TDynamicArray.hpp containers/TLinkedList.hpp
+_DEPS = TFile.hpp TString.hpp algorithms/TIterator.hpp containers/TContainer.hpp containers/TDynamicArray.hpp #containers/TLinkedList.hpp
 DEPS = $(patsubst %, $(IDIR)/%, $(_DEPS))
 
 # needed?

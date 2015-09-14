@@ -77,55 +77,53 @@ void test_darray()
    }
 }
 
-void test_linked_list()
-{
-   TLinkedList<int> list;
-
-   cout << "list size: " << list.size() << endl;
-
-   list.add_item(1);
-
-   cout << "list size: " << list.size() << endl;
-   cout << "list contains 1?: " << list.contains(1) << endl;
-
-   list.add_item(3);
-
-   cout << "list size: " << list.size() << endl;
-   cout << "list contains 3?: " << list.contains(3) << endl;
-
-   list.remove_item(3);
-
-   cout << "list size: " << list.size() << endl;
-   cout << "list contains 3?: " << list.contains(3) << endl;
-
-   list.add_item(5);
-   list.add_item(7);
-   list.add_item(9);
-
-   cout << "list size: " << list.size() << endl;
-   cout << "list contains 5?: " << list.contains(5) << endl;
-   cout << "list contains 7?: " << list.contains(7) << endl;
-   cout << "list contains 9?: " << list.contains(9) << endl;
-
-   list.remove_item(10);
-   cout << "list size: " << list.size() << endl;
-
-   list.remove_item(7);
-   cout << "list size: " << list.size() << endl;
-   cout << "list contains 5?: " << list.contains(5) << endl;
-   cout << "list contains 7?: " << list.contains(7) << endl;
-
-   list.clear();
-   cout << "list size: " << list.size() << endl;
-   cout << "list contains 1?: " << list.contains(1) << endl;
-   cout << "list contains 5?: " << list.contains(5) << endl;
-   cout << "list contains 7?: " << list.contains(7) << endl;
-   cout << "list contains 9?: " << list.contains(9) << endl;
-}
+// void test_linked_list()
+// {
+//    TLinkedList<int> list;
+//
+//    cout << "list size: " << list.size() << endl;
+//
+//    list.add_item(1);
+//
+//    cout << "list size: " << list.size() << endl;
+//    cout << "list contains 1?: " << list.contains(1) << endl;
+//
+//    list.add_item(3);
+//
+//    cout << "list size: " << list.size() << endl;
+//    cout << "list contains 3?: " << list.contains(3) << endl;
+//
+//    list.remove_item(3);
+//
+//    cout << "list size: " << list.size() << endl;
+//    cout << "list contains 3?: " << list.contains(3) << endl;
+//
+//    list.add_item(5);
+//    list.add_item(7);
+//    list.add_item(9);
+//
+//    cout << "list size: " << list.size() << endl;
+//    cout << "list contains 5?: " << list.contains(5) << endl;
+//    cout << "list contains 7?: " << list.contains(7) << endl;
+//    cout << "list contains 9?: " << list.contains(9) << endl;
+//
+//    list.remove_item(10);
+//    cout << "list size: " << list.size() << endl;
+//
+//    list.remove_item(7);
+//    cout << "list size: " << list.size() << endl;
+//    cout << "list contains 5?: " << list.contains(5) << endl;
+//    cout << "list contains 7?: " << list.contains(7) << endl;
+//
+//    list.clear();
+//    cout << "list size: " << list.size() << endl;
+//    cout << "list contains 1?: " << list.contains(1) << endl;
+//    cout << "list contains 5?: " << list.contains(5) << endl;
+//    cout << "list contains 7?: " << list.contains(7) << endl;
+//    cout << "list contains 9?: " << list.contains(9) << endl;
+// }
 
 int main()
 {
-   test_linked_list();
-
    return 0;
 }

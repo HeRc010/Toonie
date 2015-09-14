@@ -3,9 +3,7 @@
 
 #include "TContainer.hpp"
 
-/*
-   Fix pointer uses; there need to be deferences in a few places
-*/
+template <typename T> class TDynamicArrayIterator;
 
 template <typename T> class TDynamicArray : public TContainer<T>
 {
@@ -29,11 +27,65 @@ public:
 
    void remove_item(const T &item) override;
 
+   // TIterator<T> begin() const override;
+   //
+   // TIterator<T> end() const override;
+
    void clear() override;
+
+   friend class TDynamicArrayIterator<T>;
 };
 
-// including the source in a .cpp file causes linker problems... need to sort that out, but in the interim:
+// custom iterator
+// template <typename T> class TDynamicArrayIterator : public TIterator<T>
+// {
+//    const TDynamicArray<T> *darray_;
+//    unsigned index_;
+//
+// public:
+//    TDynamicArrayIterator(const TDynamicArray<T> &array, unsigned index = 0);
+//    ~TDynamicArrayIterator();
+//
+//    T get() const override;
+//
+//    bool operator==(const TDynamicArrayIterator<T> &rhs) const;
+//    bool operator!=(const TDynamicArrayIterator<T> &rhs) const;
+// };
 
+////////////////////////////////////////////////////////////////
+// TDynamicArrayIterator
+
+// template <typename T> TDynamicArrayIterator<T>::TDynamicArrayIterator(const TDynamicArray<T> &array, unsigned index)
+//    :darray_(&array), index_(index)
+// {
+// }
+//
+// template <typename T> TDynamicArrayIterator<T>::~TDynamicArrayIterator()
+// {
+// }
+//
+// template <typename T> T TDynamicArrayIterator<T>::get() const
+// {
+//    return darray_->array_[index_];
+// }
+//
+// template <typename T> bool TDynamicArrayIterator<T>::operator==(const TDynamicArrayIterator<T> &rhs) const
+// {
+//    if (darray_ != rhs.darray_)
+//       return false;
+//    if (index_ != rhs.index_)
+//       return false;
+//
+//    return true;
+// }
+//
+// template <typename T> bool TDynamicArrayIterator<T>::operator!=(const TDynamicArrayIterator<T> &rhs) const
+// {
+//    return !operator==(rhs);
+// }
+
+////////////////////////////////////////////////////////////////
+// TDynamicArray
 template <typename T> TDynamicArray<T>::TDynamicArray(unsigned initial_capacity)
    :array_(0), size_(0), capacity_(initial_capacity)
 {
@@ -63,7 +115,7 @@ template <typename T> void TDynamicArray<T>::double_capacity()
 {
    capacity_ *= 2;
 
-   // this could cause a memory leak
+   // this could cause a memory leak..
    T *new_array = new T[capacity_];
 
    // copy the contents of the array to the new array
@@ -71,21 +123,6 @@ template <typename T> void TDynamicArray<T>::double_capacity()
    {
       new_array[i] = array_[i];
    }
-
-   // alternatively?
-   // T *next_item = array_;
-   // T *next_new_item = new_array;
-   // while (*next_item)
-   // {
-   //    *(next_new_item++) = *(next_item++);
-   // }
-
-   // alternatively??
-   // for (unsigned i = 0; next_item; ++i)
-   // {
-   //    new_array[i] = next_item;
-   //    ++next_item;
-   // }
 
    delete array_;
    array_ = new_array;
@@ -116,7 +153,6 @@ template <typename T> unsigned TDynamicArray<T>::size() const
 
 template <typename T> void TDynamicArray<T>::add_item(const T &item)
 {
-   // TODO: use '==' or '>='; including 'greater than' seems unecessary
    if (size_ >= capacity_)
    {
       double_capacity();
@@ -141,6 +177,16 @@ template <typename T> void TDynamicArray<T>::remove_item(const T &item)
       }
    }
 }
+
+// template <typename T> TIterator<T> TDynamicArray<T>::begin() const
+// {
+//    return TDynamicArrayIterator<T>(*this);
+// }
+//
+// template <typename T> TIterator<T> TDynamicArray<T>::end() const
+// {
+//    return TDynamicArrayIterator<T>(*this, size_);
+// }
 
 template <typename T> void TDynamicArray<T>::clear()
 {

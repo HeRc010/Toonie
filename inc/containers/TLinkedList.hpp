@@ -107,6 +107,7 @@ template <typename T> void TLinkedList<T>::add_item(const T &item)
    ++size_;
 }
 
+// TODO: this is incorrect in some ways; it assumes that the data entries in all the nodes are unique amongst themselves; which obviously isn't a safe assumption, should take in an iterator as a parameter and use pointers as unique identifiers
 template <typename T> void TLinkedList<T>::remove_item(const T &item)
 {
    TNode<T> *prev_node = 0;
