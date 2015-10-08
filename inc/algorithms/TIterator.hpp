@@ -8,21 +8,24 @@
    One workaround would be to implement the functions in the base class but throw exceptions in the implementations indicating that the functions shouldn't be called, and/or cause seg faults.
 */
 
-// template <typename T> class TIterator
-// {
-//    public:
-//       TIterator();
-//       ~TIterator();
-//
-//       // uneeded; overload increment instead
-//       // virtual TIterator<T> next() const;
-//
-//       virtual T get() const;
-//
-//       virtual bool operator==(const TIterator &rhs) const;
-//       virtual bool operator!=(const TIterator &rhs) const;
-//       virtual TIterator<T>& operator++() const;
-// };
+#include <iostream>
+
+template <typename T> class TIterator
+{
+   public:
+      TIterator() {}
+      ~TIterator() {}
+
+      // uneeded; overload increment instead
+      // virtual TIterator<T> next() const;
+
+      virtual T get() const {}
+
+      virtual bool operator==(const TIterator &rhs) const { std::cout << "iterator.. :S" << std::endl; }
+      virtual bool operator!=(const TIterator &rhs) const {}
+      // virtual TIterator<T> operator++() const { std::cout << "base iterator.. :S" << std::endl; }
+      virtual TIterator<T>& operator++() { std::cout << "base iterator.. :S" << std::endl; }
+};
 
 // base class implementations shouldn't be called
 // ...

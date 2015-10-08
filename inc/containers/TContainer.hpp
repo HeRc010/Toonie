@@ -24,11 +24,11 @@ public:
    // remove the given item from the container
    virtual void remove_item(const T &item) = 0;
 
-   // // return an iterator pointing to the first element
-   // virtual TIterator<T> begin() const = 0;
-   //
-   // // return an iterator pointing to the last element
-   // virtual TIterator<T> end() const = 0;
+   // return an iterator pointing to the first element
+   virtual TIterator<T>& begin() const = 0;
+
+   // return an iterator pointing to the last element
+   virtual TIterator<T> end() const = 0;
 
    // remove all items from the container
    virtual void clear() = 0;

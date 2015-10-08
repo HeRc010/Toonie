@@ -4,6 +4,9 @@
 
 #include "../inc/TFile.hpp"
 #include "../inc/TString.hpp"
+
+#include "../inc/algorithms/TIterator.hpp"
+
 #include "../inc/containers/TDynamicArray.hpp"
 #include "../inc/containers/TLinkedList.hpp"
 
@@ -75,6 +78,13 @@ void test_darray()
    {
       cout << "does array contain " << i + 1 << "?: " << a_test.contains(i + 1) << endl;
    }
+
+   // test iterators
+   auto it = a_test.begin();
+   ++it;
+
+   TDynamicArrayIterator<int> darray_it(a_test);
+   ++darray_it;
 }
 
 // void test_linked_list()
@@ -125,5 +135,21 @@ void test_darray()
 
 int main()
 {
+   //test_darray();
+
+   // vector append test
+   vector<int> vec = {1, 2, 3};
+   for (auto &item : vec)
+   {
+      cout << item << endl;
+   }
+
+   // a lot simpler than I thought it would be... :S
+   vec.insert(vec.begin(), 76);
+   for (auto &item : vec)
+   {
+      cout << item << endl;
+   }
+
    return 0;
 }
