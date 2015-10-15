@@ -133,9 +133,36 @@ void test_darray()
 //    cout << "list contains 9?: " << list.contains(9) << endl;
 // }
 
+// swap function test
+void swap(int &a, int &b)
+{
+   a = a + b;
+   b = a - b;
+   a = a - b;
+}
+
+int max(int a, int b)
+{
+   return a - ((a - b) & ((a - b) >> 31));
+}
+
 int main()
 {
-   //test_darray();
+   cout << "test test" << endl;
+
+   int a = 3, b = 2;
+   int val = 0;
+
+   int test = a >> 1;
+   cout << "test: " << test << endl;
+
+   test = a >> 1;
+   cout << "test: " << test << endl;
+
+   cout << "max of 5 and 6: " << max(5, 6) << endl;
+   cout << "max of 0 and 1: " << max(1, 0) << endl;
+
+   return 0;
 
    // vector append test
    vector<int> vec = {1, 2, 3};

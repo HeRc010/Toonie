@@ -5,6 +5,7 @@
    The TString class is a custom string class to allow for additional functionality not provided in the standard template library.
 
    Todo:
+   - implement internally as a dynamic array of characters?
    - should the string class be a subclass of the std::string class?
    - implement operator==(...)
 */
