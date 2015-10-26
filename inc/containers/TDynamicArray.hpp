@@ -29,7 +29,7 @@ public:
 
    void remove_item(const T &item) override;
 
-   TIterator<T>& begin() const override;
+   TIterator<T> begin() const override;
 
    TIterator<T> end() const override;
 
@@ -47,53 +47,53 @@ template <typename T> class TDynamicArrayIterator : public TIterator<T>
 public:
    TDynamicArrayIterator(const TDynamicArray<T> &array, unsigned index = 0);
    ~TDynamicArrayIterator();
-
-   T get() const override;
-
-   bool operator==(const TDynamicArrayIterator<T> &rhs) const;
-   bool operator!=(const TDynamicArrayIterator<T> &rhs) const;
-   TIterator<T>& operator++() override;
+   //
+   // T get() const override;
+   //
+   // bool operator==(const TDynamicArrayIterator<T> &rhs) const;
+   // bool operator!=(const TDynamicArrayIterator<T> &rhs) const;
+   // TIterator<T>& operator++() override;
 };
 
 ////////////////////////////////////////////////////////////////
 // TDynamicArrayIterator
 
-template <typename T> TDynamicArrayIterator<T>::TDynamicArrayIterator(const TDynamicArray<T> &array, unsigned index)
-   :darray_(&array), index_(index)
-{
-}
-
-template <typename T> TDynamicArrayIterator<T>::~TDynamicArrayIterator()
-{
-}
-
-template <typename T> T TDynamicArrayIterator<T>::get() const
-{
-   return darray_->array_[index_];
-}
-
-template <typename T> bool TDynamicArrayIterator<T>::operator==(const TDynamicArrayIterator<T> &rhs) const
-{
-   std::cout << "yeppers" << std::endl;
-   if (darray_ != rhs.darray_)
-      return false;
-   if (index_ != rhs.index_)
-      return false;
-
-   return true;
-}
-
-template <typename T> bool TDynamicArrayIterator<T>::operator!=(const TDynamicArrayIterator<T> &rhs) const
-{
-   return !operator==(rhs);
-}
-
-template <typename T> TIterator<T>& TDynamicArrayIterator<T>::operator++()
-{
-   ++index_;
-   std::cout << "from darray it" << std::endl;
-   return *this;
-}
+// template <typename T> TDynamicArrayIterator<T>::TDynamicArrayIterator(const TDynamicArray<T> &array, unsigned index)
+//    :darray_(&array), index_(index)
+// {
+// }
+//
+// template <typename T> TDynamicArrayIterator<T>::~TDynamicArrayIterator()
+// {
+// }
+//
+// template <typename T> T TDynamicArrayIterator<T>::get() const
+// {
+//    return darray_->array_[index_];
+// }
+//
+// template <typename T> bool TDynamicArrayIterator<T>::operator==(const TDynamicArrayIterator<T> &rhs) const
+// {
+//    std::cout << "yeppers" << std::endl;
+//    if (darray_ != rhs.darray_)
+//       return false;
+//    if (index_ != rhs.index_)
+//       return false;
+//
+//    return true;
+// }
+//
+// template <typename T> bool TDynamicArrayIterator<T>::operator!=(const TDynamicArrayIterator<T> &rhs) const
+// {
+//    return !operator==(rhs);
+// }
+//
+// template <typename T> TIterator<T>& TDynamicArrayIterator<T>::operator++()
+// {
+//    ++index_;
+//    std::cout << "from darray it" << std::endl;
+//    return *this;
+// }
 
 ////////////////////////////////////////////////////////////////
 // TDynamicArray
@@ -189,19 +189,19 @@ template <typename T> void TDynamicArray<T>::remove_item(const T &item)
    }
 }
 
-template <typename T> TIterator<T>& TDynamicArray<T>::begin() const
+template <typename T> TIterator<T> TDynamicArray<T>::begin() const
 {
    // return std::move(TDynamicArrayIterator<T>(*this));
-   std::cout << "test teessstt" << std::endl;
-
-   TDynamicArrayIterator<T>* it = new TDynamicArrayIterator<T>(*this);
-   ++(*it);
-   return *it;
+   // std::cout << "test teessstt" << std::endl;
+   //
+   // TDynamicArrayIterator<T>* it = new TDynamicArrayIterator<T>(*this);
+   // ++(*it);
+   // return *it;
 }
 
 template <typename T> TIterator<T> TDynamicArray<T>::end() const
 {
-   return std::move(TDynamicArrayIterator<T>(*this, size_));
+   // return std::move(TDynamicArrayIterator<T>(*this, size_));
 }
 
 template <typename T> void TDynamicArray<T>::clear()

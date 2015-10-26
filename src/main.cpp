@@ -80,58 +80,61 @@ void test_darray()
    }
 
    // test iterators
-   auto it = a_test.begin();
-   ++it;
-
-   TDynamicArrayIterator<int> darray_it(a_test);
-   ++darray_it;
+   // auto it = a_test.begin();
+   // ++it;
+   //
+   // TDynamicArrayIterator<int> darray_it(a_test);
+   // ++darray_it;
 }
 
-// void test_linked_list()
-// {
-//    TLinkedList<int> list;
-//
-//    cout << "list size: " << list.size() << endl;
-//
-//    list.add_item(1);
-//
-//    cout << "list size: " << list.size() << endl;
-//    cout << "list contains 1?: " << list.contains(1) << endl;
-//
-//    list.add_item(3);
-//
-//    cout << "list size: " << list.size() << endl;
-//    cout << "list contains 3?: " << list.contains(3) << endl;
-//
-//    list.remove_item(3);
-//
-//    cout << "list size: " << list.size() << endl;
-//    cout << "list contains 3?: " << list.contains(3) << endl;
-//
-//    list.add_item(5);
-//    list.add_item(7);
-//    list.add_item(9);
-//
-//    cout << "list size: " << list.size() << endl;
-//    cout << "list contains 5?: " << list.contains(5) << endl;
-//    cout << "list contains 7?: " << list.contains(7) << endl;
-//    cout << "list contains 9?: " << list.contains(9) << endl;
-//
-//    list.remove_item(10);
-//    cout << "list size: " << list.size() << endl;
-//
-//    list.remove_item(7);
-//    cout << "list size: " << list.size() << endl;
-//    cout << "list contains 5?: " << list.contains(5) << endl;
-//    cout << "list contains 7?: " << list.contains(7) << endl;
-//
-//    list.clear();
-//    cout << "list size: " << list.size() << endl;
-//    cout << "list contains 1?: " << list.contains(1) << endl;
-//    cout << "list contains 5?: " << list.contains(5) << endl;
-//    cout << "list contains 7?: " << list.contains(7) << endl;
-//    cout << "list contains 9?: " << list.contains(9) << endl;
-// }
+void test_linked_list()
+{
+   TLinkedList<int> list;
+
+   cout << "list size: " << list.size() << endl;
+
+   list.add_item(1);
+
+   cout << "list size: " << list.size() << endl;
+   cout << "list contains 1?: " << list.contains(1) << endl;
+
+   list.add_item(3);
+
+   cout << "list size: " << list.size() << endl;
+   cout << "list contains 3?: " << list.contains(3) << endl;
+
+   list.remove_item(3);
+
+   cout << "list size: " << list.size() << endl;
+   cout << "list contains 3?: " << list.contains(3) << endl;
+
+   list.add_item(5);
+   list.add_item(7);
+   list.add_item(9);
+
+   cout << "list size: " << list.size() << endl;
+   cout << "list contains 5?: " << list.contains(5) << endl;
+   cout << "list contains 7?: " << list.contains(7) << endl;
+   cout << "list contains 9?: " << list.contains(9) << endl;
+
+   list.remove_item(10);
+   cout << "list size: " << list.size() << endl;
+
+   list.remove_item(7);
+   cout << "list size: " << list.size() << endl;
+   cout << "list contains 5?: " << list.contains(5) << endl;
+   cout << "list contains 7?: " << list.contains(7) << endl;
+
+   list.clear();
+   cout << "list size: " << list.size() << endl;
+   cout << "list contains 1?: " << list.contains(1) << endl;
+   cout << "list contains 5?: " << list.contains(5) << endl;
+   cout << "list contains 7?: " << list.contains(7) << endl;
+   cout << "list contains 9?: " << list.contains(9) << endl;
+
+   // iterator test
+
+}
 
 // swap function test
 void swap(int &a, int &b)
@@ -146,37 +149,63 @@ int max(int a, int b)
    return a - ((a - b) & ((a - b) >> 31));
 }
 
+class TestClass
+{
+public:
+   // TestClass();
+   // ~TestClass();
+
+   virtual void test_fn() const;
+};
+
+void TestClass::test_fn() const
+{
+
+}
+
+class TestSubClass : public TestClass
+{
+public:
+   void test_fn() const override;
+};
+
 int main()
 {
-   cout << "test test" << endl;
+   // cout << "test test" << endl;
+   //
+   // int a = 3, b = 2;
+   // int val = 0;
+   //
+   // int test = a >> 1;
+   // cout << "test: " << test << endl;
+   //
+   // test = a >> 1;
+   // cout << "test: " << test << endl;
+   //
+   // cout << "max of 5 and 6: " << max(5, 6) << endl;
+   // cout << "max of 0 and 1: " << max(1, 0) << endl;
+   //
+   // return 0;
+   //
+   // // vector append test
+   // vector<int> vec = {1, 2, 3};
+   // for (auto &item : vec)
+   // {
+   //    cout << item << endl;
+   // }
+   //
+   // // a lot simpler than I thought it would be... :S
+   // vec.insert(vec.begin(), 76);
+   // for (auto &item : vec)
+   // {
+   //    cout << item << endl;
+   // }
 
-   int a = 3, b = 2;
-   int val = 0;
+   //test_linked_list();
 
-   int test = a >> 1;
-   cout << "test: " << test << endl;
-
-   test = a >> 1;
-   cout << "test: " << test << endl;
-
-   cout << "max of 5 and 6: " << max(5, 6) << endl;
-   cout << "max of 0 and 1: " << max(1, 0) << endl;
-
-   return 0;
-
-   // vector append test
-   vector<int> vec = {1, 2, 3};
-   for (auto &item : vec)
-   {
-      cout << item << endl;
-   }
-
-   // a lot simpler than I thought it would be... :S
-   vec.insert(vec.begin(), 76);
-   for (auto &item : vec)
-   {
-      cout << item << endl;
-   }
+   // subclass test
+   TestSubClass tsc;
+   //TestClass tc = tsc;
 
    return 0;
 }

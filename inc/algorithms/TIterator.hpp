@@ -13,18 +13,19 @@
 template <typename T> class TIterator
 {
    public:
-      TIterator() {}
-      ~TIterator() {}
+      // TIterator() {}
+      // ~TIterator() {}
 
       // uneeded; overload increment instead
       // virtual TIterator<T> next() const;
 
-      virtual T get() const {}
-
-      virtual bool operator==(const TIterator &rhs) const { std::cout << "iterator.. :S" << std::endl; }
-      virtual bool operator!=(const TIterator &rhs) const {}
-      // virtual TIterator<T> operator++() const { std::cout << "base iterator.. :S" << std::endl; }
-      virtual TIterator<T>& operator++() { std::cout << "base iterator.. :S" << std::endl; }
+      // virtual T get() const {}
+      //
+      // virtual bool operator==(const TIterator &rhs) const { return false; }
+      // virtual bool operator!=(const TIterator &rhs) const { return false; }
+      // // virtual TIterator<T> operator++() const { std::cout << "base iterator.. :S" << std::endl; }
+      // virtual TIterator<T>& operator++() { std::cout << "base iterator.. :S" << std::endl; }
+      virtual TIterator operator++() const;
 };
 
 // base class implementations shouldn't be called

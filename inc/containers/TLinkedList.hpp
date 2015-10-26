@@ -13,6 +13,12 @@ public:
    TNode<T> *next;
 };
 
+template <typename T> class TLinkedListIterator : public TIterator<T>
+{
+public:
+   void operator++() const override;
+};
+
 template <typename T> class TLinkedList : public TContainer<T>
 {
    TNode<T> *head;
@@ -29,6 +35,11 @@ public:
    void add_item(const T &item) override;
 
    void remove_item(const T &item) override;
+
+   // TODO:
+   TIterator<T> begin() const;
+
+   TIterator<T> end() const;
 
    void clear() override;
 };
@@ -128,6 +139,18 @@ template <typename T> void TLinkedList<T>::remove_item(const T &item)
       prev_node = next_node;
       next_node = next_node->next;
    }
+}
+
+// TODO: add iterator functions
+template <typename T> TIterator<T> TLinkedList<T>::begin() const
+{
+   // TLinkedListIterator<T> temp;
+   // return temp;
+}
+
+template <typename T> TIterator<T> TLinkedList<T>::end() const
+{
+
 }
 
 template <typename T> void TLinkedList<T>::clear()
