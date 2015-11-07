@@ -3,28 +3,48 @@
 
 #include "TContainer.hpp"
 
+#include "../algorithms/TIterator.hpp"
+
 template <typename T> class TNode
 {
 public:
    TNode(const T &data);
+   TNode(const TNode &rhs);
    ~TNode();
 
    T data;
    TNode<T> *next;
 };
 
-template <typename T> class TLinkedListIterator : public TIterator<T>
-{
-public:
-   void operator++() const override;
-};
-
 template <typename T> class TLinkedList : public TContainer<T>
 {
-   TNode<T> *head;
+   TNode<T> *head, *tail;
    unsigned size_;
 
 public:
+   // Cutom iterator
+   class TLinkedListIterator : public TIterator
+   {
+      TLinkedListIterator(TNode<T> *node); //const TNode<T> &node);
+
+      // TODO: node storage format; pointer or object?
+      //TNode<T> node_;
+      TNode<T> *node_;
+
+   public:
+      TLinkedListIterator(const TLinkedListIterator &list);
+      ~TLinkedListIterator();
+
+      // Equality operators
+      bool operator==(TIterator& rhs) const override;
+      bool operator==(const TIterator& rhs) const override;
+
+      // Increment operators
+      const TLinkedListIterator& operator++() const override;
+
+      friend class TLinkedList<T>;
+   };
+
    TLinkedList();
    ~TLinkedList();
 
@@ -36,12 +56,13 @@ public:
 
    void remove_item(const T &item) override;
 
-   // TODO:
-   TIterator<T> begin() const;
-
-   TIterator<T> end() const;
-
    void clear() override;
+
+   // Traversal
+   TLinkedListIterator begin() const;
+   TLinkedListIterator end() const;
+
+   friend class TLinkedListIterator;
 };
 
 ////////////////////////////////////////////////////////////////
@@ -51,8 +72,48 @@ template <typename T> TNode<T>::TNode(const T &initial_data)
 {
 }
 
+template <typename T> TNode<T>::TNode(const TNode &rhs)
+   :data(rhs.data), next(rhs.next)
+{
+}
+
 template <typename T> TNode<T>::~TNode()
 {
+}
+
+////////////////////////////////////////////////////////////////
+// TLinkedListIterator
+//template <typename T> TLinkedList<T>::TLinkedListIterator::TLinkedListIterator(const TNode<T> &node)
+//   : node_(node)
+template <typename T> TLinkedList<T>::TLinkedListIterator::TLinkedListIterator(TNode<T> *node)
+   : node_(node)
+{
+   // ...
+}
+
+template <typename T> TLinkedList<T>::TLinkedListIterator::TLinkedListIterator(const TLinkedListIterator &TLinkedListIterator)
+{
+   // ...
+}
+
+template <typename T> TLinkedList<T>::TLinkedListIterator::~TLinkedListIterator()
+{
+   // ...
+}
+
+template <typename T> bool TLinkedList<T>::TLinkedListIterator::operator==(TIterator& rhs) const
+{
+   // ...
+}
+
+template <typename T> bool TLinkedList<T>::TLinkedListIterator::operator==(const TIterator& rhs) const
+{
+   // ...
+}
+
+template <typename T> const typename TLinkedList<T>::TLinkedListIterator& TLinkedList<T>::TLinkedListIterator::operator++() const
+{
+   // ...
 }
 
 ////////////////////////////////////////////////////////////////
@@ -141,18 +202,6 @@ template <typename T> void TLinkedList<T>::remove_item(const T &item)
    }
 }
 
-// TODO: add iterator functions
-template <typename T> TIterator<T> TLinkedList<T>::begin() const
-{
-   // TLinkedListIterator<T> temp;
-   // return temp;
-}
-
-template <typename T> TIterator<T> TLinkedList<T>::end() const
-{
-
-}
-
 template <typename T> void TLinkedList<T>::clear()
 {
    TNode<T> *next_node = head;
@@ -164,6 +213,18 @@ template <typename T> void TLinkedList<T>::clear()
    }
 
    size_ = 0;
+}
+
+template <typename T> typename TLinkedList<T>::TLinkedListIterator TLinkedList<T>::begin() const
+{
+   //return TLinkedListIterator(*head);
+   return TLinkedListIterator(head);
+}
+
+template <typename T> typename TLinkedList<T>::TLinkedListIterator TLinkedList<T>::end() const
+{
+   //return TLinkedListIterator(*tail);
+   return TLinkedListIterator(tail);
 }
 
 #endif //__TLINKEDLIST_HPP__
