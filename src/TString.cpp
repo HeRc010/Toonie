@@ -1,4 +1,4 @@
-#include "TString.hpp"
+#include "../inc/TString.hpp"
 
 using namespace std;
 

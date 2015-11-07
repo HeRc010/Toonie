@@ -134,7 +134,8 @@ void test_linked_list()
    cout << "list contains 9?: " << list.contains(9) << endl;
 
    // Iterator test
-
+   TLinkedList<int>::TLinkedListIterator start = list.begin();
+   TLinkedList<int>::TLinkedListIterator end = list.end();
 }
 
 // swap function test
@@ -171,8 +172,8 @@ public:
 class Iterator
 {
 public:
-   Iterator() {}
-   ~Iterator() {}
+   // Iterator() {}
+   // ~Iterator() {}
 
    // Equality operators
    virtual bool operator==(Iterator& rhs) const = 0;
@@ -182,7 +183,7 @@ public:
    bool operator!=(const Iterator& rhs) const { return !this->operator==(rhs); }
 
    // Increment operators
-   virtual void operator++() const = 0; // { cout << "base iterator operator" << endl; }
+   virtual const Iterator& operator++() const = 0;
 };
 
 class Container
@@ -191,6 +192,7 @@ public:
    Container() {}
    ~Container() {}
 
+   // Opt out for simplification
    //virtual Iterator begin() const = 0;
 };
 
@@ -203,7 +205,7 @@ public:
    virtual bool operator==(Iterator& rhs) const override { return false; }
    virtual bool operator==(const Iterator& rhs) const override { return false; }
 
-   virtual void operator++() const override {}
+   const ListIterator& operator++() const override { return *this; }
 };
 
 class List : public Container
@@ -225,7 +227,7 @@ public:
    virtual bool operator==(Iterator& rhs) const override { return false; }
    virtual bool operator==(const Iterator& rhs) const override { return false; }
 
-   void operator++() const override {}
+   const VectorIterator& operator++() const override { return *this; }
 };
 
 class Vector : public Container
@@ -243,7 +245,7 @@ void algor(const Iterator &start, const Iterator &end)
 {
    for (; start != end; ++start)
    {
-
+      // ...
    }
 }
 
