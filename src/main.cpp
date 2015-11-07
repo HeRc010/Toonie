@@ -132,7 +132,7 @@ void test_linked_list()
    cout << "list contains 7?: " << list.contains(7) << endl;
    cout << "list contains 9?: " << list.contains(9) << endl;
 
-   // iterator test
+   // Iterator test
 
 }
 
@@ -149,63 +149,82 @@ int max(int a, int b)
    return a - ((a - b) & ((a - b) >> 31));
 }
 
-class TestClass
+class BaseIterator
 {
 public:
-   // TestClass();
-   // ~TestClass();
+   BaseIterator() {}
+   virtual ~BaseIterator() {}
 
-   virtual void test_fn() const;
+   virtual void operator++() { cout << "base class operator" << endl; }
 };
 
-void TestClass::test_fn() const
-{
-
-}
-
-class TestSubClass : public TestClass
+class SubIterator : public BaseIterator
 {
 public:
-   void test_fn() const override;
+   SubIterator() {}
+   ~SubIterator() {}
+
+   void operator++() override { cout << "sub class operator" << endl; }
+};
+
+class SubIterator : public BaseIterator
+{
+public:
+   SubIterator() {}
+   ~SubIterator() {}
+
+   void operator++() override { cout << "sub class operator" << endl; }
+};
+
+class Container
+{
+public:
+   Container();
+   ~Container();
+};
+
+class List : public Container
+{
+public:
+   List();
+   ~List();
+
+
+};
+
+class Vector : public Container
+{
+public:
+
 };
 
 int main()
 {
-   // cout << "test test" << endl;
-   //
-   // int a = 3, b = 2;
-   // int val = 0;
-   //
-   // int test = a >> 1;
-   // cout << "test: " << test << endl;
-   //
-   // test = a >> 1;
-   // cout << "test: " << test << endl;
-   //
-   // cout << "max of 5 and 6: " << max(5, 6) << endl;
-   // cout << "max of 0 and 1: " << max(1, 0) << endl;
-   //
-   // return 0;
-   //
-   // // vector append test
-   // vector<int> vec = {1, 2, 3};
-   // for (auto &item : vec)
-   // {
-   //    cout << item << endl;
-   // }
-   //
-   // // a lot simpler than I thought it would be... :S
-   // vec.insert(vec.begin(), 76);
-   // for (auto &item : vec)
-   // {
-   //    cout << item << endl;
-   // }
+   // Iterator test
 
-   //test_linked_list();
+   BaseIterator bi;
+   SubIterator si;
 
-   // subclass test
-   TestSubClass tsc;
-   //TestClass tc = tsc;
+   bi = si;
+   ++bi;
+   ++si;
+
+   BaseIterator *bi_pointer = &si;
+   ++(*bi_pointer);
+
+   BaseIterator *heap_allocated_bi = new SubIterator();
+
+   ++(*heap_allocated_bi);
+
+   delete heap_allocated_bi;
+
+   // Using iterators from STL
+   vector<int> test_vec = {1, 2, 3};
+   auto it = test_vec.begin();
+   for (; it != test_vec.end(); ++it)
+   {
+      cout << *it << endl;
+   }
 
    return 0;
 }
