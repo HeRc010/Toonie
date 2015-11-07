@@ -11,6 +11,7 @@
 #include "../inc/containers/TLinkedList.hpp"
 
 #include <iostream>
+#include <iterator>
 
 using namespace std;
 
@@ -167,41 +168,88 @@ public:
    void operator++() override { cout << "sub class operator" << endl; }
 };
 
-class SubIterator : public BaseIterator
+class Iterator
 {
 public:
-   SubIterator() {}
-   ~SubIterator() {}
+   Iterator() {}
+   ~Iterator() {}
 
-   void operator++() override { cout << "sub class operator" << endl; }
+   // Equality operators
+   virtual bool operator==(Iterator& rhs) const = 0;
+   bool operator!=(Iterator& rhs) const { return !this->operator==(rhs); }
+
+   virtual bool operator==(const Iterator& rhs) const = 0;
+   bool operator!=(const Iterator& rhs) const { return !this->operator==(rhs); }
+
+   // Increment operators
+   virtual void operator++() const = 0; // { cout << "base iterator operator" << endl; }
 };
 
 class Container
 {
 public:
-   Container();
-   ~Container();
+   Container() {}
+   ~Container() {}
+
+   //virtual Iterator begin() const = 0;
+};
+
+class ListIterator : public Iterator
+{
+public:
+   ListIterator() {}
+   ~ListIterator() {}
+
+   virtual bool operator==(Iterator& rhs) const override { return false; }
+   virtual bool operator==(const Iterator& rhs) const override { return false; }
+
+   virtual void operator++() const override {}
 };
 
 class List : public Container
 {
 public:
-   List();
-   ~List();
+   List() {}
+   ~List() {}
 
+   ListIterator begin() const { return ListIterator(); }
+   ListIterator end() const { return ListIterator(); }
+};
 
+class VectorIterator : public Iterator
+{
+public:
+   VectorIterator() {}
+   ~VectorIterator() {}
+
+   virtual bool operator==(Iterator& rhs) const override { return false; }
+   virtual bool operator==(const Iterator& rhs) const override { return false; }
+
+   void operator++() const override {}
 };
 
 class Vector : public Container
 {
 public:
+   Vector() {}
+   ~Vector() {}
 
+   VectorIterator begin() const { return VectorIterator(); }
+   VectorIterator end() const { return VectorIterator(); }
 };
+
+// Algorithm test function
+void algor(const Iterator &start, const Iterator &end)
+{
+   for (; start != end; ++start)
+   {
+
+   }
+}
 
 int main()
 {
    // Iterator test
-
    BaseIterator bi;
    SubIterator si;
 
@@ -225,6 +273,12 @@ int main()
    {
       cout << *it << endl;
    }
+
+   // Test
+   Vector v;
+   List l;
+
+   algor(l.begin(), l.end());
 
    return 0;
 }
