@@ -1,3 +1,0 @@
-test line a
-test line b
-test line c
