@@ -7,16 +7,16 @@ LDIR=../lib
 
 LIBS=-lm
 
-_DEPS = test.h
+_DEPS = containers/linked_list/linked_list.h containers/linked_list/linked_list_tests.h
 DEPS = $(patsubst %, $(IDIR)/%, $(_DEPS))
 
-_OBJ = main.o test.o
+_OBJ = test.o containers/linked_list/linked_list.o containers/linked_list/linked_list_tests.o
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
 $(ODIR)/%.o: src/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-exec: $(OBJ)
+test: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
 
 .PHONY: clean

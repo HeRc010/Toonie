@@ -1,5 +1,13 @@
-#include "test.h"
+// std
+#include "stdio.h"
 
-int test_fn(int param) {
-  return ( (int) cos(0) ) + 1;
+// local
+#include "containers/linked_list/linked_list_tests.h"
+
+int main() {
+  printf("\nRunning tests...\n");
+
+  run_linked_list_tests();
+
+  return 0;
 }
