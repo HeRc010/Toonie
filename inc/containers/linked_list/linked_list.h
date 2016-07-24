@@ -1,10 +1,12 @@
 #ifndef __LINKED_LIST_H__
 #define __LINKED_LIST_H__
 
+// std
 #include "stdlib.h"
+#include "stdio.h" // TODO: Remove; used for testing
 
 typedef struct linked_list_node_t {
-  // ...
+  int data; // TODO: Replace with generic type
 } linked_list_node_t;
 
 typedef struct linked_list_t {
