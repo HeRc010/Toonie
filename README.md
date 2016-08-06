@@ -1,2 +1,2 @@
 # Toonie
-A small software collection to make the development of small, time-intensive C projects more efficient.
+A small collection of software to render the development of time-intensive C projects more efficient.
